@@ -1,11 +1,60 @@
-import axios from 'axios';
-const API = import.meta.env.VITE_API_URL || 'http://localhost:4000';
-console.log('TTT-mini: API baseURL =', API);
-export const client = axios.create({
-  baseURL: API,
-  headers: { 'x-org-id': 'demo-org', 'x-role': 'admin' }
+// src/api.ts
+import axios from "axios";
+
+const baseURL = import.meta.env.VITE_API_URL?.replace(/\/+$/, "") || "";
+console.log("TTT-mini: API baseURL =", baseURL);
+
+export const api = axios.create({
+  baseURL,
+  headers: {
+    "x-org-id": "demo-org",
+    "x-role": "admin"
+  }
 });
-export async function listProjects(){ const {data}=await client.get('/api/projects'); return data; }
-export async function createProject(p:any){ const {data}=await client.post('/api/projects', p); return data; }
-export async function listInitiatives(){ const {data}=await client.get('/api/initiatives'); return data; }
-export async function createInitiative(i:any){ const {data}=await client.post('/api/initiatives', i); return data; }
+
+export type RAG = "RED" | "AMBER" | "GREEN";
+export type Stage = "IDEA" | "POC" | "IN_PROGRESS" | "SCALED" | "DONE";
+
+export interface Project {
+  orgId: string;
+  projectId: string;
+  name: string;
+  problem?: string;
+  solution?: string;
+  owner?: string;
+  sponsor?: string;
+  stage?: Stage;
+  rag?: RAG;
+  valueUSDTarget?: number;
+  valueUSDDelivered?: number;
+  startDate?: string;
+  targetEndDate?: string;
+  actualEndDate?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Initiative {
+  orgId: string;
+  initiativeId: string;
+  projectId: string;
+  title: string;
+  approach?: "LEAN" | "RPA" | "GENAI" | "PROC_MINING" | "DATA" | "OTHER";
+  tech?: string;
+  owner?: string;
+  rag?: RAG;
+  valueUSDDelivered?: number;
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export async function listProjects(): Promise<Project[]> {
+  const r = await api.get("/api/projects");
+  return r.data ?? [];
+}
+
+export async function listInitiatives(): Promise<Initiative[]> {
+  const r = await api.get("/api/initiatives");
+  return r.data ?? [];
+}
