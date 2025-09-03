@@ -15,6 +15,11 @@
     "serverless-http": "^3.2.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/express-serve-static-core": "^5.0.7",
+    "@types/node": "^24.3.0",
+    "@types/serve-static": "^1.15.8",
     "serverless": "^3.40.0",
     "serverless-esbuild": "^1.54.6",
     "tsx": "^4.19.0",

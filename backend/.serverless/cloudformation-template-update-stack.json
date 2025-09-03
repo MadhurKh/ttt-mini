@@ -178,7 +178,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/ttt-mini/dev/1756890654751-2025-09-03T09:10:54.751Z/ttt-mini.zip"
+          "S3Key": "serverless/ttt-mini/dev/1756897502911-2025-09-03T11:05:02.911Z/ttt-mini.zip"
         },
         "Handler": "src/app.handler",
         "Runtime": "nodejs20.x",
@@ -204,14 +204,14 @@
         "ApiLogGroup"
       ]
     },
-    "ApiLambdaVersionZYgd2I5OYY6LvQHtq3k05Y7U9zAiBjZ0SHymYZvI30I": {
+    "ApiLambdaVersionkHOl8uJSc0CJzqj1gMDQOG9w5EoYm7VgGMr7JRj2j8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ApiLambdaFunction"
         },
-        "CodeSha256": "O4HFDYsrBnXTT+AZtrWd7VRv87AfTv/CpBrsDGK6EAM="
+        "CodeSha256": "ALigGj6+IbXiUILRpPl3o0H4ZGqQWieX8HiPcq8VN0c="
       }
     },
     "HttpApi": {
@@ -424,7 +424,7 @@
     "ApiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ApiLambdaVersionZYgd2I5OYY6LvQHtq3k05Y7U9zAiBjZ0SHymYZvI30I"
+        "Ref": "ApiLambdaVersionkHOl8uJSc0CJzqj1gMDQOG9w5EoYm7VgGMr7JRj2j8"
       },
       "Export": {
         "Name": "sls-ttt-mini-dev-ApiLambdaFunctionQualifiedArn"
